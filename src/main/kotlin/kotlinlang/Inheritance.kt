@@ -11,6 +11,9 @@ class Inheritance {
      *
      * When designing a base class, you should therefore avoid using open members in the constructors,
      * property initializers, and init blocks.
+     *
+     * Constructors:
+     * https://kotlinlang.org/docs/classes.html#constructors
      */
     open inner class Base(name: String) {
         init {
