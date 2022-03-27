@@ -33,7 +33,7 @@ object code2_bubbleSort {
         return arr
     }
     
-    private fun swap(arr: ArrayList<Int>, i: Int, j: Int) {
+    fun swap(arr: ArrayList<Int>, i: Int, j: Int) {
         // xor() 位运算，异或：无进位相加 (0+1=1, 1+1=0并且没有进位)
         
         // 异或特性:
