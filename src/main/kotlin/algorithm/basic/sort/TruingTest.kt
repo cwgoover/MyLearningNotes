@@ -1,5 +1,6 @@
 package algorithm.basic.sort
 
+import algorithm.utils.Log
 import kotlin.random.Random
 
 /**
@@ -7,18 +8,24 @@ import kotlin.random.Random
  */
 object TruingTest {
     
-    fun run(maxSize: Int, maxNum: Int, turingFun: (arr: List<Int>) -> Unit,
-                comparator: (arr: List<Int>) -> Unit): Boolean {
+    fun run(maxSize: Int, maxNum: Int, turingFun: (arr: ArrayList<Int>) -> Unit,
+                comparator: (arr: ArrayList<Int>) -> Unit): Boolean {
+//        val selfRefParams = ::run.parameters
         val arr1 = generateRandomArray(maxSize, maxNum)
         val arr2 = copyArray(arr1)
-//        println(arr1)
+        println("r:   before arr = $arr1")
+//        println("run turingFun: ${selfRefParams[3].name}")
         turingFun(arr1)
+        println("r: >> after arr = $arr1")
+//        println("run comparator: ${selfRefParams[4].name}")
         comparator(arr2)
         if (!isEquals(arr1, arr2)) {
-            println("turingFun: arr1 = $arr1")
-            println("comparator: arr2 = $arr2")
+            System.err.println("Error: the result is different:")
+            Log.e("turingFun: arr1 = $arr1")
+            Log.e("comparator: arr2 = $arr2")
             return false
         }
+        Log.d("Run successfully!")
         return true
     }
     
@@ -31,7 +38,6 @@ object TruingTest {
         // Kotlin:
         // Random.nextFloat() -> [0, 1) 所有的小数，等概率返回一个
         val size: Int = ((maxSize + 1) * Random.nextFloat()).toInt() // 长度随机
-        println("generateRandomArray: size = $size")
         val arr = ArrayList<Int>(size)
         for (i in 0 until size) {
             // 相减保证有负值
@@ -40,7 +46,7 @@ object TruingTest {
         return arr
     }
     
-    private fun copyArray(arr: List<Int>?): List<Int> {
+    private fun copyArray(arr: ArrayList<Int>?): ArrayList<Int> {
         if (arr == null) return ArrayList()
         val newArray = ArrayList<Int>(arr.size)
         for (i in arr.indices) {
@@ -64,5 +70,26 @@ object TruingTest {
 }
 
 fun main() {
+//    val testTime = 10000
+    val testTime = 30
+    val maxSize = 40
+    val maxNum = 100
+    
+    Log.i("## Start run test ($testTime):")
+    
+    for (i in 0 until testTime) {
+        if (!TruingTest.run(maxSize, maxNum,
+            { arr ->
+                execTestMethod(arr)
+            }, { arr ->
+                // 对数器里的方法b，系统排序(无误)
+                arr.sortBy { it }
+            })) break
+    }
+}
 
+fun execTestMethod(arr: ArrayList<Int>) {
+//    code01_selectionSort.selectionSort(arr)
+//    code03_insertSort.insertSort(arr)
+    code04_mergeSort.mergeSort(arr)
 }

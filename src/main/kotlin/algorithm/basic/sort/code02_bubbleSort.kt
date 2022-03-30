@@ -17,9 +17,9 @@ import algorithm.basic.sort.code2_bubbleSort.xorQuestionTwoOdd
  */
 object code2_bubbleSort {
     
-    fun bubbleSort(arr: ArrayList<Int>?): ArrayList<Int>? {
+    fun bubbleSort(arr: ArrayList<Int>?) {
         if (arr == null || arr.size < 2) {
-            return arr
+            return
         }
         // 因为每次排序后，相对最后一位都被确认，所以循环范围是从后往前缩进
         for (n in arr.size - 1 downTo 0) {
@@ -30,7 +30,6 @@ object code2_bubbleSort {
                 }
             }
         }
-        return arr
     }
     
     fun swap(arr: ArrayList<Int>, i: Int, j: Int) {
@@ -102,8 +101,9 @@ object code2_bubbleSort {
 
 fun main() {
     val set = getRandomSet(69, 20)
-    println("before sort: $set")
-    val arr = bubbleSort(set.toList() as ArrayList<Int>)
+    val arr = set.toList() as ArrayList<Int>
+    println("before sort: $arr")
+    bubbleSort(arr)
     println("after sort: $arr")
     
     // For object

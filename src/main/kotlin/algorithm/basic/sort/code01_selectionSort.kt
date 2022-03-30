@@ -1,7 +1,5 @@
 package algorithm.basic.sort
 
-import algorithm.basic.sort.code01_selectionSort.getRandomSet
-import algorithm.basic.sort.code01_selectionSort.selectionSort
 import kotlin.collections.ArrayList
 import kotlin.collections.HashSet
 import kotlin.random.Random
@@ -17,9 +15,9 @@ import kotlin.random.Random
  */
 object code01_selectionSort {
     
-    fun selectionSort(arr: ArrayList<Int>?): ArrayList<Int>? {
+    fun selectionSort(arr: ArrayList<Int>?) {
         if (arr == null || arr.size < 2) {
-            return arr
+            return
         }
         for (i in arr.indices) {    // 0 ~ N-1
             // find out the minimum value in the array i ~ N-1
@@ -30,7 +28,6 @@ object code01_selectionSort {
             // sort here
             swap(arr, i, minIndex)
         }
-        return arr
     }
     
     private fun swap(arr: ArrayList<Int>, i: Int, j: Int) {
@@ -46,11 +43,4 @@ object code01_selectionSort {
         }
         return s
     }
-}
-
-fun main() {
-    val set = getRandomSet(69, 20)
-    println("before sort: $set")
-    val arr = selectionSort(set.toList() as ArrayList<Int>)
-    println("after sort: $arr")
 }

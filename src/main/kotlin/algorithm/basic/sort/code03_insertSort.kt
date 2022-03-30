@@ -1,7 +1,6 @@
 package algorithm.basic.sort
 
 import algorithm.basic.sort.code2_bubbleSort.swap
-import java.util.*
 import kotlin.collections.ArrayList
 
 /**
@@ -54,18 +53,5 @@ object code03_insertSort {
 //            }
         }
     }
-    
-    // 对数器里的方法b，系统排序(无误)
-    fun comparator(arr: ArrayList<Int>?) {
-        arr?.sortBy { it }
-    }
 
-}
-
-fun main() {
-    val set = code01_selectionSort.getRandomSet(100, 20)
-    val arr = set.toList() as ArrayList
-    println("before sort: $arr")
-    code03_insertSort.insertSort(arr)
-    println("after sort: $arr")
 }
