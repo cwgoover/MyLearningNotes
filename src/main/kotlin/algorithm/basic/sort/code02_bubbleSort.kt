@@ -32,6 +32,8 @@ object code2_bubbleSort {
         }
     }
     
+    // Erica: 这个交换有问题的啊！！！！
+    //  Error: 如果是交换相同位置的两个数，理论上应该是该数不变，但是用异或的方式交换后就会变成0！
     fun swap(arr: ArrayList<Int>, i: Int, j: Int) {
         // xor() 位运算，异或：无进位相加 (0+1=1, 1+1=0并且没有进位)
         
@@ -90,7 +92,7 @@ object code2_bubbleSort {
             // 根据eor(a^b)最右的一位1将数组分为两堆，一堆的所有数字该位为1，另一堆的所有数字该位为0
             // 这样就会把这两个奇数通过该位分在不同的堆里，让每个堆里只有一个奇数存在
             if ((cur.and(oneBitInEor) == cur)) {
-                // onlyOne只跟该位上有1的一堆做异或运算，就可以找到两个奇数中的一个
+                // oneOddValue只跟该位上无1的一堆做异或运算，就可以找到两个奇数中的一个
                 oneOddValue = oneOddValue.xor(cur)
             }
         }

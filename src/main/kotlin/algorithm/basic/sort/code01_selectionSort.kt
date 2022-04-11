@@ -30,7 +30,7 @@ object code01_selectionSort {
         }
     }
     
-    private fun swap(arr: ArrayList<Int>, i: Int, j: Int) {
+    fun swap(arr: ArrayList<Int>, i: Int, j: Int) {
         val tmp = arr[i]
         arr[i] = arr[j]
         arr[j] = tmp

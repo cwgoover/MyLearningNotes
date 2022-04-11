@@ -71,9 +71,9 @@ object TruingTest {
 
 fun main() {
 //    val testTime = 10000
-    val testTime = 30
-    val maxSize = 40
-    val maxNum = 100
+    val testTime = 60
+    val maxSize = 50
+    val maxNum = 120
     
     Log.i("## Start run test ($testTime):")
     
@@ -91,5 +91,6 @@ fun main() {
 fun execTestMethod(arr: ArrayList<Int>) {
 //    code01_selectionSort.selectionSort(arr)
 //    code03_insertSort.insertSort(arr)
-    code04_mergeSort.mergeSort(arr)
+//    code04_mergeSort.mergeSort(arr)
+    code06_quickSort.quickSort(arr)
 }
