@@ -6,7 +6,7 @@ import algorithm.basic.sort.code2_bubbleSort.xorQuestionOneOdd
 import algorithm.basic.sort.code2_bubbleSort.xorQuestionTwoOdd
 
 /**
- * 冒泡排序, O(n2)
+ * 冒泡排序, 时间复杂度O(N^2)
  * 每次从第一位开始，如果左边的数比右边的数大，相邻两数交换；
  * 最后将数组中最大的数交换到最后一位。即通过相邻交换，把最大的数排到最尾部。
  * 然后再从第一个数开始找到次最大的数排在倒数第二个位置，以此类推。

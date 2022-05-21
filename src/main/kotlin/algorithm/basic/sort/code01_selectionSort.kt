@@ -5,7 +5,7 @@ import kotlin.collections.HashSet
 import kotlin.random.Random
 
 /**
- * 选择排序, O(n2)
+ * 选择排序, 时间复杂度O(N^2)
  * 从第一个位置开始，找到数组中最小值的位置，然后交换两个数。
  * 然后第二个位置，第三个位置以此类推，从剩下的数组中找到最小值并且交换
  *

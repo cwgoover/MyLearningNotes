@@ -33,7 +33,7 @@ object TruingTest {
         // Java:
         // Random.nextInt() -> [0, 1) 所有的小数，等概率返回一个
         // Random.nextInt() * N -> [0, N) 所有的小数，等概率返回一个
-        // (int)(Random.nextInt() * N) -> N -> [0, N) 所有的整数，等概率返回一个
+        // (int)(Random.nextInt() * N) -> [0, N) 所有的整数，等概率返回一个
     
         // Kotlin:
         // Random.nextFloat() -> [0, 1) 所有的小数，等概率返回一个
@@ -92,5 +92,6 @@ fun execTestMethod(arr: ArrayList<Int>) {
 //    code01_selectionSort.selectionSort(arr)
 //    code03_insertSort.insertSort(arr)
 //    code04_mergeSort.mergeSort(arr)
-    code06_quickSort.quickSort(arr)
+//    code06_quickSort.quickSort(arr)
+    code07_heapSort.heapSort(arr)
 }
