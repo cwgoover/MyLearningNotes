@@ -42,6 +42,7 @@ object TruingTest {
         for (i in 0 until size) {
             // 相减保证有负值
             arr.add(((maxNum + 1) * Random.nextFloat() - maxNum * Random.nextFloat()).toInt())
+//            arr.add(((maxNum + 1) * Random.nextFloat()).toInt())  // 只有正数
         }
         return arr
     }
@@ -94,4 +95,5 @@ fun execTestMethod(arr: ArrayList<Int>) {
 //    code04_mergeSort.mergeSort(arr)
 //    code06_quickSort.quickSort(arr)
     code07_heapSort.heapSort(arr)
+//    code08_radixSort.radixSort(arr)   // radixSort 只能sort正数
 }
