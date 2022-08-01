@@ -36,7 +36,7 @@ object code04_mergeSort {
     private fun process(arr: ArrayList<Int>, start: Int, end: Int) {
         if (start == end) return    // 结束条件, 到叶节点了
     
-//        val mid = start + (end - start) shr 1 // Error: 最右边必须带括号，位运算符的优先级低于加减运算符
+//        val mid = start + (end - start) shr 1 // FIXME: Error: 最右边必须带括号，位运算符的优先级低于加减运算符
         val mid = start + ((end - start) shr 1)
         process(arr, start, mid)
         process(arr, mid + 1, end)
@@ -44,7 +44,7 @@ object code04_mergeSort {
     }
     
     private fun merge(arr: ArrayList<Int>, start: Int, mid: Int, end: Int) {
-//        val newArray = ArrayList<Int>(arr.size)   // Error: arr的长度一直不变不能直接用，我们需要的是merge部分的数组长度
+//        val newArray = ArrayList<Int>(arr.size)   // FIXME: Error: arr的长度一直不变不能直接用，我们需要的是merge部分的数组长度
         val newArray = ArrayList<Int>(end - start + 1)
         var lp = start
         var rp = mid + 1
@@ -59,7 +59,7 @@ object code04_mergeSort {
                 rp++
             }
         }
-        // Error: 将剩余的元素copy到新数组
+        // FIXME: Error: 将剩余的元素copy到新数组
         while (lp <= mid) {
             newArray.add(arr[lp++])
         }
@@ -68,7 +68,7 @@ object code04_mergeSort {
         }
         // copy回原数组
 //        arr.addAll(0, newArray)
-//        arr.addAll(start, newArray) // Error: 这个方法是在start的位置插入新数组元素，会导致原数组变长；最后造成堆栈溢出: java.lang.StackOverflowError
+//        arr.addAll(start, newArray) // FIXME: Error: 这个方法是在start的位置插入新数组元素，会导致原数组变长；最后造成堆栈溢出: java.lang.StackOverflowError
         for (i in newArray.indices) {
             arr[start + i] = newArray[i]
         }

@@ -85,15 +85,15 @@ object code07_heapSort {
         var leftChild = index * 2 + 1   // 左孩子下标
         while (leftChild < heapSize) {  // 下方还有孩子的时候; 因为左孩子下标总比右孩子下标小, 所以左孩子不越界说明一定有孩子, 此时右孩子可有可没有
             // 左右两个子节点选出最大的那个, 把下标给largest; 即如果有右孩子并且右孩子的值比左孩子大，下标为右孩子，否则是左孩子的下标
-            // ERROR: miss (leftChild + 1 < heapSize)
+            // FIXME: ERROR: miss (leftChild + 1 < heapSize)
             var largest = if ((leftChild + 1 < heapSize) && (arr[leftChild + 1] > arr[leftChild])) {
                 leftChild + 1
             } else {
                 leftChild   // 可能两种情况: 1. 没有右孩子; 2. 右孩子的值小于左孩子
             }
-            // ERROR: 父节点和较大子节点作比较，谁的值大，谁把下标给largest; 这里父节点相当于nIndex的位置
+            // FIXME: ERROR: 父节点和较大子节点作比较，谁的值大，谁把下标给largest; 这里父节点相当于nIndex的位置
             largest = if (arr[largest] > arr[nIndex]) largest else nIndex
-            // ERROR: miss退出循环的条件
+            // FIXME: ERROR: miss退出循环的条件
             if (largest == nIndex) {
                 // 这里相当于父节点所在位置的值大于两个child，那么就可以停止循环了，这已经是一个大根堆结构了
                 break

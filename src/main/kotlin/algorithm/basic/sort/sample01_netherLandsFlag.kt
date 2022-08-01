@@ -69,7 +69,7 @@ object code05_netherLandsFlag {
         var rightMargin = -1    // 表示小于等于区域的右边界，一开始在数组的最左侧(0位的左面)
         var leftMargin = arr.size   //  大于区域的左边界，起始位置在数组的最右端(末尾位置的右面)
         var i = 0
-        // ERROR: TODO: why?
+        // FIXME: ERROR: TODO: why?
 //        while (i <= leftMargin) {
         while (i < leftMargin) {
             if (arr[i] < num) {
@@ -104,7 +104,7 @@ object code05_netherLandsFlag {
 //            if (arr[i] <= m) {
 //                newArray[i] = arr[i]
 //            } else {
-//                // ERROR: 创建newArray的size只是开辟了size的空间大小
+//                // FIXME: ERROR: 创建newArray的size只是开辟了size的空间大小
 //                // newArray的真实size是数组存储数据的大小，这里不能反向操作。
 //                newArray[arr.size - 1 - i] = arr[i]
 //            }

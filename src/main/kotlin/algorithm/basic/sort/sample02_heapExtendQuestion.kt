@@ -51,7 +51,7 @@ object sample02_heapExtendQuestion {
         
         var index = 0
         // Erica Solution: so stupid!
-        // Error: need to check the range of size whether is larger than k
+        // FIXME: Error: need to check the range of size whether is larger than k
 //        for (i in 0..k) {
 //            minHeap.add(arr[i])
 //            index++
