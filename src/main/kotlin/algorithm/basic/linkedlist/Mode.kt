@@ -377,6 +377,24 @@ object Mode {
 }
 
 fun main() {
+    "creating and linking nodes".run {
+        val node1 = Mode.Node(value = 1)
+        val node2 = Mode.Node(value = 2)
+        val node3 = Mode.Node(value = 3)
+        val node4 = Mode.Node(value = 4)
+        val node5 = Mode.Node(value = 5)
+        
+        node1.next = node2
+        node2.next = node3
+        node3.next = node4
+        node4.next = node5
+        
+        // You’ve just created five nodes
+        println(node1)
+        // ---Example of creating and linking nodes---
+        // 1 -> 2 -> 3 -> 4 -> 5
+    }
+    
     val list = Mode.LinkedList<Int>()
     
     "fluent interface push".run {

@@ -1,5 +1,7 @@
 package algorithm.basic.recursive
 
+import algorithm.basic.recursive.code01_GetMax.Companion.getMax
+
 /**
  * Created by i352072(erica.cao@sap.com) on 03/28/2022
  */
@@ -26,4 +28,10 @@ class code01_GetMax {
         // Return this value if it's greater than or equal to the minimumValue or the minimumValue otherwise
         return leftMax.coerceAtLeast(rightMax)  // Java: Math.max()
     }
+}
+
+fun main() {
+    val arr = arrayListOf(5, 4, 3, 2, 7, 9, 1, 0 )
+    println("The list is: $arr")
+    println("The max value is: ${getMax(arr)}")
 }
