@@ -1,6 +1,6 @@
-package algorithm.basic.sort
+package algorithm.basic.sorting
 
-import algorithm.basic.sort.sample02_heapExtendQuestion.sortedArrDistanceLessK
+import algorithm.basic.sorting.sample02_heapExtendQuestion.sortedArrDistanceLessK
 import java.util.PriorityQueue
 import kotlin.math.min
 

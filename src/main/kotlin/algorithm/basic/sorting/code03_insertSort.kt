@@ -1,6 +1,6 @@
-package algorithm.basic.sort
+package algorithm.basic.sorting
 
-import algorithm.basic.sort.code2_bubbleSort.swap
+import algorithm.basic.sorting.code2_bubbleSort.swap
 import kotlin.collections.ArrayList
 
 /**

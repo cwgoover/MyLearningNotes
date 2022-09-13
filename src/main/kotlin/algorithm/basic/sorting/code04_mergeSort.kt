@@ -1,4 +1,4 @@
-package algorithm.basic.sort
+package algorithm.basic.sorting
 
 /**
  * 归并排序，时间复杂度O(N*logN), 额外空间复杂度O(N) —— 最多只用准备N的额外空间就足够

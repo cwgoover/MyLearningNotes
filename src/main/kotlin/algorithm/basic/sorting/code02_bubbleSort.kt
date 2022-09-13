@@ -1,9 +1,9 @@
-package algorithm.basic.sort
+package algorithm.basic.sorting
 
-import algorithm.basic.sort.code01_selectionSort.getRandomSet
-import algorithm.basic.sort.code2_bubbleSort.bubbleSort
-import algorithm.basic.sort.code2_bubbleSort.xorQuestionOneOdd
-import algorithm.basic.sort.code2_bubbleSort.xorQuestionTwoOdd
+import algorithm.basic.sorting.code01_selectionSort.getRandomSet
+import algorithm.basic.sorting.code2_bubbleSort.bubbleSort
+import algorithm.basic.sorting.code2_bubbleSort.xorQuestionOneOdd
+import algorithm.basic.sorting.code2_bubbleSort.xorQuestionTwoOdd
 
 /**
  * 冒泡排序, 时间复杂度O(N^2)

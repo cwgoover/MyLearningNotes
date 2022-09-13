@@ -1,6 +1,6 @@
-package algorithm.basic.sort
+package algorithm.basic.sorting
 
-import algorithm.basic.sort.code01_selectionSort.swap
+import algorithm.basic.sorting.code01_selectionSort.swap
 import kotlin.random.Random
 
 /**

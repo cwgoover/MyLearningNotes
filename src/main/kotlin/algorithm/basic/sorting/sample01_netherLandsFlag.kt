@@ -1,10 +1,10 @@
-package algorithm.basic.sort
+package algorithm.basic.sorting
 
-import algorithm.basic.sort.code01_selectionSort.getRandomSet
-import algorithm.basic.sort.code01_selectionSort.swap
-import algorithm.basic.sort.code05_netherLandsFlag.comparator
-import algorithm.basic.sort.code05_netherLandsFlag.netherLandsFlag
-import algorithm.basic.sort.code05_netherLandsFlag.netherLandsFlagQ1
+import algorithm.basic.sorting.code01_selectionSort.getRandomSet
+import algorithm.basic.sorting.code01_selectionSort.swap
+import algorithm.basic.sorting.code05_netherLandsFlag.comparator
+import algorithm.basic.sorting.code05_netherLandsFlag.netherLandsFlag
+import algorithm.basic.sorting.code05_netherLandsFlag.netherLandsFlagQ1
 
 /**
  *

@@ -1,6 +1,6 @@
-package algorithm.basic.sort
+package algorithm.basic.sorting
 
-import algorithm.basic.sort.code01_selectionSort.swap
+import algorithm.basic.sorting.code01_selectionSort.swap
 
 /**
  * 堆排序，时间复杂度O(N*logN), 额外空间复杂度O(1), 因为只用了有限的几个变量；

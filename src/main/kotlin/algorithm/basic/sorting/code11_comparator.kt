@@ -1,4 +1,4 @@
-package algorithm.basic.sort
+package algorithm.basic.sorting
 
 import java.util.PriorityQueue
 
