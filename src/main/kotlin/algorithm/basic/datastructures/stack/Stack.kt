@@ -1,4 +1,4 @@
-package algorithm.basic.datastructures
+package algorithm.basic.datastructures.stack
 
 import algorithm.basic.datastructures.linkedlist.Mode
 
@@ -8,10 +8,19 @@ import algorithm.basic.datastructures.linkedlist.Mode
 interface Stack<T: Any> {
     fun push(element: T)
     fun pop(): T?
+    fun peek(): T?
+    
+    val count: Int
+        get
+    
+    val isEmpty: Boolean
+        get() = count == 0
 }
 
-class StackByArrayListImpl<T: Any>: Stack<T> {
+class StackByArrayListImpl<T: Any> : Stack<T> {
     private val storage = arrayListOf<T>()
+    override val count: Int
+        get() = storage.size
     
     override fun push(element: T) {
         storage.add(element)
@@ -19,10 +28,21 @@ class StackByArrayListImpl<T: Any>: Stack<T> {
     
     override fun pop(): T? {
         // FIXME: missing corner case check
-        if (storage.size == 0) {
-            return null
-        }
-        return storage.removeAt(storage.size - 1)
+//        if (storage.size == 0) {
+//            return null
+//        }
+//        return storage.removeAt(storage.size - 1)
+        
+        if (isEmpty) return null
+        return storage.removeAt(count - 1)
+    }
+    
+    override fun peek(): T? {
+//        if (storage.size == 0) {
+//            return null
+//        }
+//        return storage[0]
+        return storage.lastOrNull()
     }
     
     override fun toString(): String = buildString {
@@ -39,12 +59,20 @@ class StackByArrayListImpl<T: Any>: Stack<T> {
 class StackByLinkedListImpl<T : Any>: Stack<T> {
     private val storage: Mode.LinkedList<T> = Mode.LinkedList()
     
+    override val count: Int
+        get() = storage.size
+    
     override fun push(element: T) {
         storage.push(element)
     }
     
     override fun pop(): T? {
         return storage.pop()
+    }
+    
+    override fun peek(): T? {
+        if (storage.isEmpty()) return null
+        return storage.nodeAt(0)?.value
     }
     
     override fun toString(): String {
