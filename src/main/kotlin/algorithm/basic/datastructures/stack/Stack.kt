@@ -17,10 +17,28 @@ interface Stack<T: Any> {
         get() = count == 0
 }
 
+// A variable number of arguments (also known as varargs) is a feature of the Kotlin language
+// that allows you to pass a number of values as a single argument variable to a function.
+// A vararg argument will be available inside the function as if it was an Array type data.
+fun <T: Any> stackOf(vararg elements: T): Stack<T> {
+    // Array.asList()
+    return StackByArrayListImpl.create(elements.asList())
+}
+
 class StackByArrayListImpl<T: Any> : Stack<T> {
     private val storage = arrayListOf<T>()
     override val count: Int
         get() = storage.size
+    
+    companion object {
+        fun <T: Any> create(items: Iterable<T>): Stack<T> {
+            val stack = StackByArrayListImpl<T>()
+            for (item in items) {
+                stack.push(item)
+            }
+            return stack
+        }
+    }
     
     override fun push(element: T) {
         storage.add(element)
@@ -109,5 +127,20 @@ fun main() {
         if (poppedElement != null) {
             println("Popped: $poppedElement")
         }
+        println()
+    }
+    
+    "initializing a stack from a list".run {
+        val list = listOf("A", "B", "C", "D")
+        val stack = StackByArrayListImpl.create(list)
+        print(stack)
+        println("Popped: ${stack.pop()}")
+        println()
+    }
+    
+    "initializing a stack from an array literal".run {
+        val stack = stackOf(1.0, 2.0, 3.0, 4.0)
+        print(stack)
+        println("Popped: ${stack.pop()}")
     }
 }

@@ -6,8 +6,6 @@ import algorithm.basic.datastructures.linkedlist.Challenges.isPalindrome
 import algorithm.basic.datastructures.linkedlist.Challenges.isPalindromeByRecursive
 import algorithm.basic.datastructures.linkedlist.Challenges.mergeSorted
 import algorithm.basic.datastructures.linkedlist.Challenges.printInReverse
-import algorithm.basic.datastructures.linkedlist.Challenges.printInReverseByStack
-import java.util.Stack
 
 /**
  * Created by i352072(erica.cao@sap.com) on 07/09/2022
@@ -49,24 +47,6 @@ object Challenges {
             print(" <- ")
         }
         print(this.value.toString())
-    }
-    
-    fun <T: Any> Mode.LinkedList<T>.printInReverseByStack() {
-        val stack = Stack<T>()
-        for (item in this) {
-            stack.push(item)
-        }
-        println("Print the linkedList in reverse order:")
-        
-        var node: T?
-        while (stack.size > 0) {
-            node = stack.pop()
-            print("$node")
-            
-            if (stack.size > 0) {
-                print(" -> ")
-            }
-        }
     }
     
     /**
@@ -358,11 +338,6 @@ fun main() {
     
     "printInReverse".run {
         list.printInReverse()
-        println("\n")
-    }
-    
-    "printInReverseByStack".run {
-        list.printInReverseByStack()
         println("\n")
     }
     
