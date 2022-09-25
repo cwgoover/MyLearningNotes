@@ -1,6 +1,7 @@
 package algorithm.basic.datastructures.stack
 
 import algorithm.basic.datastructures.linkedlist.Mode
+import algorithm.basic.datastructures.stack.Challenges.checkParentheses
 import algorithm.basic.datastructures.stack.Challenges.printInReverseByStack
 
 /**
@@ -28,7 +29,25 @@ object Challenges {
     }
     
     fun String.checkParentheses(): Boolean {
-    
+        // Create a new stack and start going through your string, character by character
+        val stack = StackByArrayListImpl<Char>()
+        for (c in this) {
+            when (c) {
+                // Push every opening parenthesis into the stack
+                '(' -> stack.push(c)
+                // FIXME: miss corner case: ')' is more than '('
+//                ')' -> stack.pop()
+                ')' -> if (stack.isEmpty) {
+                    // Pop one item from the stack for every closing parenthesis, but if you’re
+                    // out of items on the stack, your string is already imbalanced,
+                    // so you can immediately return from the function
+                    return false
+                } else {
+                    stack.pop()
+                }
+            }
+        }
+        return stack.isEmpty
     }
 }
 
@@ -43,5 +62,12 @@ fun main() {
         println("Original list:\n$list")
         list.printInReverseByStack()
         println("\n")
+    }
+    
+    "check parentheses".run {
+        val str1 = "h((e))llo(world)()"
+        println("$str1 is balanced: ${str1.checkParentheses()}")
+        val str2 = "(hello world"
+        println("$str2 is balanced: ${str2.checkParentheses()}")
     }
 }

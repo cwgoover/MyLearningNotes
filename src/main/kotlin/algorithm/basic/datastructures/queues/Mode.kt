@@ -1,0 +1,84 @@
+package algorithm.basic.datastructures.queues
+
+/**
+ * Created by i352072(erica.cao@sap.com) on 09/20/2022
+ */
+object Mode {
+    
+    interface Queue<T: Any> {
+        fun enqueue(element: T): Boolean
+        fun dequeue(): T?
+        
+        val count: Int
+            get
+        val isEmpty: Boolean
+            get() = count == 0
+        
+        fun peek(): T?
+    }
+    
+    // Note that the interface implementation uses the same generic type T for the elements it stores.
+    class ArrayListQueue<T: Any> : Queue<T> {
+        private val list = arrayListOf<T>()
+        
+        override val count: Int
+            get() = list.size
+        
+        override fun enqueue(element: T): Boolean {
+            list.add(element)
+            return true
+        }
+    
+        override fun dequeue(): T? = if (isEmpty) null else list.removeAt(0)
+    
+        override fun peek(): T? = list.getOrNull(0)
+        
+        override fun toString(): String = list.toString()
+    }
+    
+    /**
+     * The LinkedList class in standard java library is Doubly-linked list implementation of
+     * the List and Deque interfaces. All the operations perform as could be expected for a
+     * doubly-linked list.
+     *
+     * But using standard LinkedList class to implement LinkedListQueue is too simple, so here
+     * I use the DoublyLinkedList class implemented by myself to finish this class implementation.
+     *
+     */
+    class LinkedListQueue<T: Any> : Queue<T> {
+        
+        private val list = DoublyLinkedList<T>()
+    
+        override val count: Int
+            get() = TODO()
+        
+        override fun enqueue(element: T): Boolean {
+            TODO()
+        }
+    
+        override fun dequeue(): T? {
+            TODO()
+        }
+    
+        override fun peek(): T? {
+            TODO()
+        }
+    
+    }
+    
+}
+
+fun main() {
+    "Queue with ArrayList".run {
+        val queue = Mode.ArrayListQueue<String>().apply {
+            enqueue("Ray")
+            enqueue("Brian")
+            enqueue("Eric")
+        }
+        println(queue)
+        queue.dequeue()
+        println(queue)
+        println("Next up: ${queue.peek()}")
+    }
+    
+}
