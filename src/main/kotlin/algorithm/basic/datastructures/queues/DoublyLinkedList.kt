@@ -15,6 +15,7 @@ class DoublyLinkedList<T: Any> {
     
     fun append(value: T) {
         val node = Node(value = value, previous = tail)
+        
         if (isEmpty()) {
             head = node
             tail = node

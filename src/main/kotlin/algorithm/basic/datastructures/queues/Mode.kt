@@ -48,22 +48,60 @@ object Mode {
     class LinkedListQueue<T: Any> : Queue<T> {
         
         private val list = DoublyLinkedList<T>()
+        
+        // FIXME: Since we can't directly get size info from DoublyLinkedList class, so we can use
+        //  this variable to calculate size by myself!!
+        private var size = 0
     
         override val count: Int
-            get() = TODO()
+            get() = size
         
         override fun enqueue(element: T): Boolean {
-            TODO()
+            list.append(element)
+            size++
+            return true
         }
     
         override fun dequeue(): T? {
-            TODO()
+            // Implemented by Erica
+//            if (isEmpty) {
+//                return null
+//            }
+//            size--
+//            return list.remove(list.first!!)
+            
+            // Reference version
+            val firstNode = list.first ?: return null
+            size--
+            return list.remove(firstNode)
         }
     
-        override fun peek(): T? {
-            TODO()
-        }
+        override fun peek(): T? = list.first?.value
     
+        // For debugging purposes to override toString()
+        // This leverages the DoublyLinkedList’s existing implementation for toString().
+        override fun toString(): String = list.toString()
+    }
+    
+    class RingBufferQueue<T: Any>(size: Int) : Queue<T> {
+        
+        private val ringBuffer: RingBuffer<T> = RingBuffer(size)
+    
+        override val count: Int
+            get() = ringBuffer.count
+    
+        override fun peek(): T? =
+            ringBuffer.first
+        
+        override fun enqueue(element: T): Boolean =
+            ringBuffer.write(element)
+    
+        override fun dequeue(): T? =
+            ringBuffer.read()
+    
+        // This code creates a string representation of the queue by delegating to the underlying ring buffer.
+        override fun toString(): String =
+            ringBuffer.toString()
     }
     
 }
@@ -75,10 +113,40 @@ fun main() {
             enqueue("Brian")
             enqueue("Eric")
         }
+        println("------- Queue with ArrayList -------")
         println(queue)
         queue.dequeue()
         println(queue)
         println("Next up: ${queue.peek()}")
+        println()
+    }
+    
+    "Queue with Doubly Linked List".run {
+        val queue = Mode.LinkedListQueue<String>().apply {
+            enqueue("Ray")
+            enqueue("Brian")
+            enqueue("Eric")
+        }
+        println("------- Queue with Doubly Linked List -------")
+        println(queue)
+        queue.dequeue()
+        println(queue)
+        println("Next up: ${queue.peek()}")
+        println()
+    }
+    
+    "Queue with Ring Buffer".run {
+        val queue = Mode.RingBufferQueue<String>(10).apply {
+            enqueue("Ray")
+            enqueue("Brian")
+            enqueue("Eric")
+        }
+        println("------- Queue with Ring Buffer -------")
+        println(queue)
+        queue.dequeue()
+        println(queue)
+        println("Next up: ${queue.peek()}")
+        println()
     }
     
 }
