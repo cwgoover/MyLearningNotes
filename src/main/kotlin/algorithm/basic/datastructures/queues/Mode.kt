@@ -1,5 +1,7 @@
 package algorithm.basic.datastructures.queues
 
+import algorithm.basic.datastructures.stack.StackByLinkedListImpl
+
 /**
  * Created by i352072(erica.cao@sap.com) on 09/20/2022
  */
@@ -104,6 +106,48 @@ object Mode {
             ringBuffer.toString()
     }
     
+    class StackQueue<T: Any>: Queue<T> {
+        private val leftStack = StackByLinkedListImpl<T>()
+        private val rightStack = StackByLinkedListImpl<T>()
+    
+        override val count: Int
+            get() = leftStack.count + rightStack.count
+        
+        override val isEmpty: Boolean
+            get() = leftStack.isEmpty && rightStack.isEmpty
+    
+        override fun peek(): T? {
+            if (leftStack.isEmpty) {
+                transferElements()
+            }
+            return leftStack.peek()
+        }
+        
+        override fun enqueue(element: T): Boolean {
+            rightStack.push(element)
+            return true
+        }
+    
+        override fun dequeue(): T? {
+            if (leftStack.isEmpty) {
+                transferElements()
+            }
+            return leftStack.pop()
+        }
+    
+        override fun toString(): String {
+            return "Left stack: \n\t$leftStack \nRight stack: \n\t$rightStack"
+        }
+    
+        private fun transferElements() {
+            var element = rightStack.pop()
+            while (element != null) {
+                leftStack.push(element)
+                element = rightStack.pop()
+            }
+        }
+    }
+    
 }
 
 fun main() {
@@ -142,6 +186,20 @@ fun main() {
             enqueue("Eric")
         }
         println("------- Queue with Ring Buffer -------")
+        println(queue)
+        queue.dequeue()
+        println(queue)
+        println("Next up: ${queue.peek()}")
+        println()
+    }
+    
+    "Queue with Double Stack".run {
+        val queue = Mode.StackQueue<String>().apply {
+            enqueue("Ray")
+            enqueue("Brian")
+            enqueue("Eric")
+        }
+        println("------- Queue with Double Stack -------")
         println(queue)
         queue.dequeue()
         println(queue)
