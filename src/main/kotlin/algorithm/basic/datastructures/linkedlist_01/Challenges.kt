@@ -1,11 +1,11 @@
-package algorithm.basic.datastructures.linkedlist
+package algorithm.basic.datastructures.linkedlist_01
 
-import algorithm.basic.datastructures.linkedlist.Challenges.addInReverse
-import algorithm.basic.datastructures.linkedlist.Challenges.getMiddle
-import algorithm.basic.datastructures.linkedlist.Challenges.isPalindrome
-import algorithm.basic.datastructures.linkedlist.Challenges.isPalindromeByRecursive
-import algorithm.basic.datastructures.linkedlist.Challenges.mergeSorted
-import algorithm.basic.datastructures.linkedlist.Challenges.printInReverse
+import algorithm.basic.datastructures.linkedlist_01.Challenges.addInReverse
+import algorithm.basic.datastructures.linkedlist_01.Challenges.getMiddle
+import algorithm.basic.datastructures.linkedlist_01.Challenges.isPalindrome
+import algorithm.basic.datastructures.linkedlist_01.Challenges.isPalindromeByRecursive
+import algorithm.basic.datastructures.linkedlist_01.Challenges.mergeSorted
+import algorithm.basic.datastructures.linkedlist_01.Challenges.printInReverse
 
 /**
  * Created by i352072(erica.cao@sap.com) on 07/09/2022

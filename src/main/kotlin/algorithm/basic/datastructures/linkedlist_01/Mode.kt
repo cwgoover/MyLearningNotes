@@ -1,4 +1,4 @@
-package algorithm.basic.datastructures.linkedlist
+package algorithm.basic.datastructures.linkedlist_01
 
 import java.lang.IndexOutOfBoundsException
 

@@ -1,6 +1,6 @@
-package algorithm.basic.datastructures.stack
+package algorithm.basic.datastructures.stack_02
 
-import algorithm.basic.datastructures.linkedlist.Mode
+import algorithm.basic.datastructures.linkedlist_01.Mode
 
 /**
  * Created by i352072(erica.cao@sap.com) on 09/09/2022

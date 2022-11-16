@@ -1,8 +1,8 @@
-package algorithm.basic.datastructures.stack
+package algorithm.basic.datastructures.stack_02
 
-import algorithm.basic.datastructures.linkedlist.Mode
-import algorithm.basic.datastructures.stack.Challenges.checkParentheses
-import algorithm.basic.datastructures.stack.Challenges.printInReverseByStack
+import algorithm.basic.datastructures.linkedlist_01.Mode
+import algorithm.basic.datastructures.stack_02.Challenges.checkParentheses
+import algorithm.basic.datastructures.stack_02.Challenges.printInReverseByStack
 
 /**
  * Created by i352072(erica.cao@sap.com) on 09/14/2022

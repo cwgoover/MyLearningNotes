@@ -1,6 +1,6 @@
-package algorithm.basic.datastructures.queues
+package algorithm.basic.datastructures.queues_03
 
-import algorithm.basic.datastructures.stack.StackByLinkedListImpl
+import algorithm.basic.datastructures.stack_02.StackByLinkedListImpl
 
 /**
  * Created by i352072(erica.cao@sap.com) on 09/20/2022

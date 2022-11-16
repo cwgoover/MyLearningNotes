@@ -1,8 +1,8 @@
-package algorithm.basic.datastructures.queues
+package algorithm.basic.datastructures.queues_03
 
-import algorithm.basic.datastructures.queues.Challenges.nextPlayer
-import algorithm.basic.datastructures.queues.Challenges.reverse
-import algorithm.basic.datastructures.stack.StackByArrayListImpl
+import algorithm.basic.datastructures.queues_03.Challenges.nextPlayer
+import algorithm.basic.datastructures.queues_03.Challenges.reverse
+import algorithm.basic.datastructures.stack_02.StackByArrayListImpl
 
 /**
  * Created by i352072(erica.cao@sap.com) on 09/20/2022

@@ -1,4 +1,4 @@
-package algorithm.basic.datastructures.queues
+package algorithm.basic.datastructures.queues_03
 
 /**
  * Created by i352072(erica.cao@sap.com) on 09/21/2022
