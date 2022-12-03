@@ -1,0 +1,20 @@
+package algorithm.others
+/**
+ *
+ * LRU（Least Recently Used）缓存算法
+ * 使用HashMap+双向链表，使get和put的时间复杂度达到O(1)。
+ * 读缓存时从HashMap中查找key，更新缓存时同时更新HashMap和双向链表，双向链表始终按照访问顺序排列。
+ *
+ * 如 res/drawable/LRUCache.png 所示，黑色部分为HashMap的结构，红色箭头则是双向链表的正向连接（逆向连接未画出）
+ * 可以清晰地看到，数据的访问顺序是1->3->5->6->10。我们只需要在每次访问过后改变链表的连接顺序即可。
+ *
+ * https://www.jianshu.com/p/b1ab4a170c3c
+ *
+ */
+class LRUCacheImpl {
+
+}
+
+fun main() {
+
+}
