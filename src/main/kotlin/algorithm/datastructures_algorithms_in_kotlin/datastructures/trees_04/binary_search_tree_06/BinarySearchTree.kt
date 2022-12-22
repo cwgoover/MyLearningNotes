@@ -43,6 +43,83 @@ class BinarySearchTree<T: Comparable<T>> {
         return node
     }
     
+    fun contains(value: T): Boolean {
+        root ?: return false
+        
+        // In-order traversal has a time complexity of O(n), thus this implementation of contains
+        // has the same time complexity as an exhaustive search through an unsorted array.
+        // 这种方式是全量查找value，不会判断value的值从而选择不同的路径查找，所以时间复杂度是O(n)
+        var found = false
+        root?.traverseInOrder {
+            if (it == value) found  = true
+        }
+        return found
+    }
+    
+    fun containsPlus(value: T): Boolean {
+        // Start by setting current to the root node.
+        var current = root
+        
+        // While current is not null, check the current node’s value.
+        while (current != null) {
+            // If the value is equal to what you’re trying to find, return true.
+            if (current.value == value) {
+                return true
+            }
+    
+            // Otherwise, decide whether you’re going to check the left or right child.
+            current = if (value < current.value) {
+                current.leftNode
+            } else {
+                current.rightNode
+            }
+        }
+        return false
+    }
+    
+    fun remove(value: T) {
+        root = remove(root, value)
+    }
+    
+    private fun remove(node: BinaryNode<T>?, value: T): BinaryNode<T>? {
+        node ?: return null
+        
+        // when 用来找到要remove的node
+        when {
+            // 当找到要remove的node后，就要开始根据三种情况来分别处理
+            value == node.value -> {
+                // Case 1: remove Leaf node
+                // In the case in which the node is a leaf node, you simply return null, thereby removing the current node.
+                if (node.leftNode == null && node.rightNode == null) {
+                    return null
+                }
+                // Case 2: remove Nodes with one child
+                // If the node has no left child, you return node.rightChild to reconnect the right subtree.
+                if (node.leftNode == null) {
+                    return node.rightNode
+                }
+                // If the node has no right child, you return node.leftChild to reconnect the left subtree.
+                if (node.rightNode == null) {
+                    return node.leftNode
+                }
+                // Case 3: remove Nodes with two children
+                // This is the case in which the node to be removed has both a left and right child.
+                // You replace the node’s value with the smallest value from the right subtree.
+                // You then call remove on the right child to remove this swapped value.
+                node.rightNode?.min?.value?.let {
+                    // 看对应的解释图，当发现要删除的node有两个子节点的时候；第一步，做替换，用右节点下最小的结点替换当前结点
+                    // 相当于删除了当前结点
+                    node.value = it
+                }
+                // 第二步，删除还在右节点下最小的那个结点，实际达到替代的目的
+                node.rightNode = remove(node.rightNode, node.value)
+            }
+            value < node.value -> node.leftNode = remove(node.leftNode, value)
+            else -> node.rightNode = remove(node.rightNode, value)
+        }
+        return node
+    }
+    
     override fun toString(): String {
         return root?.toString() ?: "empty tree"
     }
@@ -55,6 +132,36 @@ fun main() {
         (0..4).forEach {    // FIXME: 注意这里的写法!!
             bst.insert(it)
         }
-        println(bst)
+        println("$bst\n")
     }
+    
+    val exampleTree = BinarySearchTree<Int>().apply {
+        insert(3)
+        insert(1)
+        insert(4)
+        insert(0)
+        insert(2)
+        insert(5)
+    }
+    
+    "building a BST -- keep it from becoming unbalanced".run {
+        println("${exampleTree}Much nicer!\n")
+    }
+    
+    "finding a node".run {
+        if (exampleTree.contains(5)) {
+            println("Found 5!\n")
+        } else {
+            println("Couldn't find 5\n")
+        }
+    }
+    
+    "removing a node".run {
+        println("Tree before removal:")
+        println(exampleTree)
+        exampleTree.remove(3)
+        println("Tree after removing root:")
+        println(exampleTree)
+    }
+    
 }

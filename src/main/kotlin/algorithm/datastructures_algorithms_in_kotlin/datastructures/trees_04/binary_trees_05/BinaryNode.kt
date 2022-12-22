@@ -10,6 +10,10 @@ class BinaryNode<T: Any?>(var value: T) {
     var leftNode: BinaryNode<T>? = null
     var rightNode: BinaryNode<T>? = null
     
+    // This recursive min property will help you find the minimum node in a subtree.
+    val min: BinaryNode<T>
+        get() = leftNode?.min ?: this
+    
     override fun toString(): String {
         return diagram(this, "", "", "")
     }
