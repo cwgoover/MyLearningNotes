@@ -77,6 +77,25 @@ class BinarySearchTree<T: Comparable<T>> {
         return false
     }
     
+    fun contains(subtree: BinarySearchTree<T>): Boolean {
+        // Inside contains, you begin by inserting all of the elements of the current tree into a set.
+        // 这里神来之笔啊，将tree上的数据直接转存到一个set里方便后面查找
+        val set = mutableSetOf<T>()
+        root?.traverseInOrder {
+            set.add(it)
+        }
+        
+        // isEqual will store the result. For every element in the subtree, you check if the value
+        // is contained in the set. If at any point set.contains(it) evaluates to false, you’ll
+        // make sure isEqual stays false even if subsequent elements evaluate to true by assigning
+        // isEqual && list.contains(it) to itself.
+        var isEqual = true
+        subtree.root?.traverseInOrder {
+            isEqual = isEqual && set.contains(it)
+        }
+        return isEqual
+    }
+    
     fun remove(value: T) {
         root = remove(root, value)
     }
