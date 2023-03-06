@@ -32,6 +32,51 @@ data class Phone(
     val usage: String?
 )
 
+
+// *******************************************************************************
+data class MenteeRequestField(
+    var label: String = "",
+    var value: String = ""
+)
+
+/**
+ * 这个例子是一个template，如果自己写equals()的template
+ */
+data class LandingMenteeRequestItemData(
+    val cardId: String = "",
+    val mentorId: String? = null,
+    val programId: String? = null,
+    val menteeId: String? = null,
+    val menteeAvatarUUId: String? = null,
+    val menteeName: String? = null,
+    val jobName: String? = null,
+    val fields: MutableList<MenteeRequestField>? = null,
+    val actions: MutableList<MenteeRequestField>? = null
+) {
+    fun isEqual(other: LandingMenteeRequestItemData): Boolean {
+        if (this.fields?.size != other.fields?.size) {
+            return false
+        }
+        // 如何遍历list fields里的元素并且查看是否相等
+        this.fields?.let {
+            // FIXME: 注意这里的用法！==> list.withIndex()
+            for ((index, field) in this.fields.withIndex()) {
+                val otherField = other.fields?.get(index)
+                if (field.label != otherField?.label || field.value != otherField.value) {
+                    return false
+                }
+            }
+        }
+        return this.mentorId == other.menteeId &&
+            this.programId == other.programId &&
+            this.menteeId == other.menteeId &&
+            this.menteeAvatarUUId == other.menteeAvatarUUId &&
+            this.menteeName == other.menteeName &&
+            this.jobName == other.jobName
+    }
+    
+}
+
 fun main() {
     val phoneList = mutableListOf<Phone>().apply {
         add(Phone(number = "122334", usage = null))
